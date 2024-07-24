@@ -1,9 +1,10 @@
+const searchParam = new URLSearchParams(location.search);
 const h1 = document.querySelector("h1");
 
-const start = `12 Jul 2024 16:00:00 UTC`
-const end = `5 Aug 2024 16:00:00 UTC`
+const start = searchParam.get(`start`) || `12 Jul 2024 16:00:00 UTC`
+const end = searchParam.get(`end`) || `5 Aug 2024 16:00:00 UTC`
 
-const target = 10000
+const target = parseFloat(searchParam.get(`target`)) || 10000
 
 const x = d3
 .scaleLinear()
